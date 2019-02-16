@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "CSP Extension",
+  "description": "Browsing",
+  "version": "3",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "injector.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "management"
+  ],
+  "web_accessible_resources": [
+    "*"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
